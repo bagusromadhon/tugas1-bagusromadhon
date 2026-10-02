@@ -2,39 +2,60 @@
 
 ## Dataset yang Dipilih
 
-Isi informasi berikut sebelum Milestone 1.
-
 | Item | Isi |
 |---|---|
-| Nama dataset | `[isi nama dataset]` |
-| Sumber | `[URL BPS / Satu Data Indonesia / BMKG / HuggingFace / Kaggle]` |
-| Lisensi/ketentuan pakai | `[isi]` |
-| Ukuran | `[>= 500 MB atau > 1.000.000 baris]` |
-| Periode data | `[isi]` |
-| Unit analisis | `[isi]` |
+| Nama dataset | NOAA Global Hourly – Indonesia 2023–2024 |
+| Penyedia | National Centers for Environmental Information (NCEI), NOAA |
+| Sumber utama | https://www.ncei.noaa.gov/data/global-hourly/ |
+| Direktori data | https://www.ncei.noaa.gov/data/global-hourly/access/ |
+| Ketentuan penggunaan | Data dapat diakses secara publik melalui NOAA/NCEI. Sumber data wajib dicantumkan dalam dokumentasi dan hasil analisis. |
+| Ukuran data mentah | 523,96 MB |
+| Jumlah baris | 1.273.803 baris |
+| Jumlah file | 228 file CSV |
+| Periode data | 2023–2024 |
+| Cakupan wilayah | Stasiun meteorologi di Indonesia |
+| Unit analisis | Satu observasi cuaca pada satu stasiun dan waktu pengamatan |
 
-## Tempat Mencari Dataset
+## Deskripsi Dataset
 
-Pilih dataset Indonesia yang legal digunakan, dapat didokumentasikan sumbernya, dan memenuhi batas ukuran tugas.
+Dataset berasal dari NOAA Global Hourly atau Integrated Surface
+Database (ISD). Dataset berisi pengamatan cuaca per jam dari stasiun
+meteorologi Indonesia.
 
-| Situs | Kegunaan |
-|---|---|
-| [Satu Data Indonesia](https://data.go.id/) | Portal data terbuka lintas instansi pemerintah Indonesia. |
-| [Badan Pusat Statistik](https://www.bps.go.id/) | Statistik sosial, ekonomi, kependudukan, dan data wilayah. |
-| [BMKG Data Online](https://dataonline.bmkg.go.id/) | Data cuaca, iklim, gempa bumi, dan observasi meteorologi. |
-| [Hugging Face Datasets](https://huggingface.co/datasets) | Dataset publik yang dapat dicari berdasarkan topik, bahasa, atau ukuran. |
-| [Kaggle Datasets](https://www.kaggle.com/datasets) | Katalog dataset publik; periksa lisensi dan dokumentasi pembuatnya. |
-| [Google Dataset Search](https://datasetsearch.research.google.com/) | Mesin pencari untuk menemukan dataset dari berbagai portal. |
+Variabel yang tersedia antara lain:
 
-## Cara Memperoleh Data
+- identitas dan nama stasiun;
+- tanggal dan waktu pengamatan;
+- koordinat stasiun;
+- elevasi;
+- arah dan kecepatan angin;
+- jarak pandang;
+- suhu udara;
+- titik embun;
+- tekanan udara;
+- kode kualitas pengamatan;
+- atribut cuaca tambahan yang ketersediaannya bergantung pada stasiun.
 
-1. Buka URL sumber di atas.
-2. Unduh file ke folder `data/raw/` tanpa mengubah data mentah.
-3. Catat nama file dan checksum bila tersedia.
-4. Ubah variabel `DATA_PATH` pada `notebooks/01_data_profiling.ipynb` agar menunjuk ke file tersebut.
+## Cakupan Data
 
-## Aturan Penyimpanan
+| Tahun | Jumlah baris |
+|---:|---:|
+| 2023 | 605.051 |
+| 2024 | 668.752 |
+| **Total** | **1.273.803** |
 
-- Jangan commit dataset mentah atau hasil olahan berukuran besar ke Git.
-- File pada `data/raw/` adalah data asli dan tidak boleh diubah.
-- Simpan hasil transformasi yang dapat direproduksi pada `data/processed/`.
+Jumlah file per tahun adalah 114 file. Setiap file merepresentasikan
+data satu stasiun pada satu tahun pengamatan.
+
+## Struktur Penyimpanan Lokal
+
+```text
+data/
+├── README.md
+├── isd-history.csv
+└── raw/
+    └── noaa_global_hourly/
+        ├── 2023/
+        │   └── *.csv
+        └── 2024/
+            └── *.csv
