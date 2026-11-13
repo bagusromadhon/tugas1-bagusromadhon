@@ -9,7 +9,7 @@
 | Sumber utama | https://www.ncei.noaa.gov/data/global-hourly/ |
 | Direktori data | https://www.ncei.noaa.gov/data/global-hourly/access/ |
 | Ketentuan penggunaan | Data dapat diakses secara publik melalui NOAA/NCEI. Sumber data wajib dicantumkan dalam dokumentasi dan hasil analisis. |
-| Ukuran data mentah | 523,96 MB |
+| Ukuran data mentah | 523,96 MiB (549.411.069 byte) |
 | Jumlah baris | 1.273.803 baris |
 | Jumlah file | 228 file CSV |
 | Periode data | 2023–2024 |
@@ -59,3 +59,18 @@ data/
         │   └── *.csv
         └── 2024/
             └── *.csv
+```
+
+## Mengunduh dan Memverifikasi Data
+
+1. Jalankan environment sesuai README utama dan buka notebook `notebooks/01_data_profiling.ipynb`.
+2. Jalankan seluruh cell secara berurutan. Cell awal mengunduh metadata stasiun dari https://www.ncei.noaa.gov/pub/data/noaa/isd-history.csv.
+3. Notebook memilih stasiun berkode negara `ID` yang aktif pada tahun pengamatan, lalu mengunduh CSV tahun 2024 dan 2023 dari `https://www.ncei.noaa.gov/data/global-hourly/access/{tahun}/{USAF}{WBAN}.csv`.
+4. File yang sudah tersedia dilewati. Periksa daftar kegagalan unduhan; unduhan lengkap pada pengambilan ini menghasilkan 114 file per tahun.
+5. Jalankan profiling untuk memeriksa ukuran, jumlah baris, skema, rentang waktu, null, duplikasi, dan jenis laporan.
+
+Profiling hanya membaca CSV dalam subfolder `2023` dan `2024`. File di akar `data/raw/noaa_global_hourly/` tidak disertakan. Data mentah tidak diunggah ke GitHub; unduhan memerlukan koneksi internet. Isi sumber NOAA dapat berubah sehingga hasil unduhan baru perlu diverifikasi kembali.
+
+## Batasan Profiling
+
+Nilai null bawaan tidak mencakup kode sentinel NOAA seperti `+9999` dan `99999`. Nilai dan kode kualitas akan diuraikan pada Milestone 2. Pemeriksaan duplikasi awal membandingkan 14 kolom inti, bukan seluruh atribut CSV. Data mentah dipertahankan tanpa perubahan.
