@@ -86,3 +86,17 @@ Hasil cleaning masih berisi **1.273.803 laporan dari 114 stasiun**. Tidak ada ba
 Saya menyimpan hasilnya ke `data/processed/noaa_indonesia_2023_2024.parquet`, lalu memeriksa kembali isinya menggunakan DuckDB `SUMMARIZE`. Jumlah laporan, jumlah stasiun, rentang waktu, dan nilai kosong juga dicek. File Parquet tetap disimpan secara lokal dan tidak ikut dimasukkan ke Git.
 
 Aturan pembacaan nilai dan kode kualitas mengacu pada [dokumentasi format ISD NOAA](https://www.ncei.noaa.gov/pub/data/noaa/isd-format-document.pdf). Batas rentang nilai pada notebook dipakai sebagai pemeriksaan kewajaran awal. Data mentah tetap disimpan agar hasil cleaning bisa ditelusuri dan diperiksa kembali.
+
+## Analisis Milestone 3
+
+Pada Milestone 3, saya memakai Parquet hasil cleaning untuk melihat cakupan laporan, pola suhu bulanan, pola suhu menurut jam, dan perbedaan antarstasiun. Analisisnya ada di `notebooks/03_eda_and_insights.ipynb`.
+
+Saya menggabungkan laporan pada stasiun dan waktu yang sama sebelum menghitung rata-rata per jam, per hari, lalu per bulan. Untuk membandingkan bulan dan tahun, saya memakai stasiun dengan minimal 20 hari bersuhu valid pada setiap bulan selama 2023–2024. Hasilnya ada 50 stasiun yang memenuhi syarat dari 114 stasiun awal. Setiap stasiun dan setiap bulan diberi bobot sama pada perbandingan tahunan.
+
+Pada kelompok tersebut, suhu bulanan tertinggi muncul pada November 2023 (28,36°C) dan terendah pada Februari 2023 (27,05°C). Rata-rata selisih suhu 2024 terhadap 2023 sebesar +0,23°C, dengan 42 dari 50 stasiun memiliki selisih positif. Hasil ini hanya menggambarkan kelompok stasiun yang dianalisis dan belum menunjukkan tren iklim jangka panjang.
+
+Notebook menghasilkan tujuh grafik interaktif Plotly: jumlah laporan bulanan, persentase data kosong, suhu bulanan, heatmap suhu tiap stasiun, pola suhu menurut jam UTC, sebaran suhu berdasarkan koordinat, serta selisih suhu 2024 terhadap 2023 per stasiun. Saya tetap menggunakan UTC sesuai dokumentasi NOAA; jam pada grafik belum dikonversi menjadi WIB, WITA, atau WIT.
+
+Untuk menjalankan ulang, buka notebook 03 setelah notebook 02 selesai dan jalankan seluruh cell secara berurutan. Grafik tersimpan di `output/figures/` sebagai HTML dan dapat dibuka melalui browser. File `plotly.min.js` di folder tersebut perlu tetap bersama file HTML agar grafik bisa dibuka tanpa internet. Folder output dikecualikan dari Git; grafik dapat dibuat ulang dari notebook.
+
+Kelengkapan jam pengamatan masih berbeda antarstasiun. Rata-rata harian memakai jam yang tersedia, jadi hasil tetap berpotensi dipengaruhi pengamatan yang hilang. Sebaran stasiun juga belum mewakili seluruh wilayah Indonesia secara merata.

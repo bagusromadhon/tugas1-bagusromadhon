@@ -1,5 +1,15 @@
 # Tugas 1: Eksplorasi dan Analisis Dataset Besar Indonesia
 
+## Progres Analisis Cuaca Indonesia
+
+Saya memakai data NOAA Global Hourly dari stasiun Indonesia tahun 2023–2024. Notebook dijalankan berurutan:
+
+1. `notebooks/01_data_profiling.ipynb`: pengambilan data dan pemeriksaan awal.
+2. `notebooks/02_data_cleaning.ipynb`: cleaning Polars dan validasi DuckDB, menghasilkan Parquet lokal.
+3. `notebooks/03_eda_and_insights.ipynb`: analisis waktu dan lokasi dengan tujuh grafik interaktif Plotly.
+
+Notebook 03 membaca Parquet dari notebook 02, lalu menyimpan grafik HTML ke `output/figures/`. Grafik bisa dilihat di JupyterLab atau dibuka melalui browser bersama file `plotly.min.js` dalam folder yang sama. Angka dan keputusan analisis dijelaskan di notebook serta `data/README.md`. AI Disclosure akan diisi sebelum pengumpulan akhir.
+
 Template untuk Tugas 1 mata kuliah Analisis Big Data. Setelah repository GitHub Classroom dibuat, ubah nama repository menjadi `tugas1-[username_github]`.
 
 ## Milestone
