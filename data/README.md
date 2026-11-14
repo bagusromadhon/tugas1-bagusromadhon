@@ -74,3 +74,9 @@ Profiling hanya membaca CSV dalam subfolder `2023` dan `2024`. File di akar `dat
 ## Batasan Profiling
 
 Nilai null bawaan tidak mencakup kode sentinel NOAA seperti `+9999` dan `99999`. Nilai dan kode kualitas akan diuraikan pada Milestone 2. Pemeriksaan duplikasi awal membandingkan 14 kolom inti, bukan seluruh atribut CSV. Data mentah dipertahankan tanpa perubahan.
+
+## Data Bersih Milestone 2
+
+Jalankan `notebooks/02_data_cleaning.ipynb` setelah notebook profiling. Hasilnya disimpan sebagai `data/processed/noaa_indonesia_2023_2024.parquet` dan tidak dimasukkan ke Git. Notebook menampilkan jumlah data mentah, sentinel, duplikasi persis, jumlah nilai yang menjadi null, serta profil DuckDB `SUMMARIZE`. Pada data lokal yang diuji, hasil bersih berisi 1.273.803 laporan dari 114 stasiun. Duplikasi stasiun dan waktu yang memiliki jenis laporan berbeda tetap dipertahankan.
+
+Definisi dan kode kualitas merujuk pada [dokumentasi format ISD NOAA](https://www.ncei.noaa.gov/pub/data/noaa/isd-format-document.pdf). Batas rentang fisik yang dipakai notebook adalah aturan kewajaran analisis, sehingga perlu ditinjau untuk setiap pertanyaan penelitian.
