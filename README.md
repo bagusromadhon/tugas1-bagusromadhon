@@ -239,8 +239,8 @@ Buka JupyterLab pada `http://localhost:8888/lab`. Konfigurasi Dockerfile menjala
 
 Isi bagian ini sebelum pengumpulan akhir.
 
-> Alat AI yang digunakan: [isi sesuai template dosen].
+> Alat AI yang digunakan: Codex.
 >
-> Bagian yang dibantu: [isi sesuai template dosen].
+> Bagian Yang Dibantu : memakai AI untuk melihat pov pemula ketika melihat notebook yang saya kerjakan , dan apa kira yang perlu saya perbaiki , tanpa mengubah isi file tersebut , saya ijinkan anda cuma untuk me review bukan mengubah ,
 >
-> Verifikasi yang dilakukan: [isi sesuai template dosen].
+> Verifikasi yang dilakukan: Notebook dijalankan ulang melalui Docker. Hasilnya diperiksa melalui jumlah baris, nilai kosong, kode kualitas, profil DuckDB, dan output grafik. Pemeriksaan teknis ini dibantu AI; pemahaman kode dan peninjauan akhir sebelum pengumpulan tetap menjadi tanggung jawab saya.
