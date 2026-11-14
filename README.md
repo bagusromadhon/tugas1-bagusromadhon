@@ -229,8 +229,8 @@ Buka JupyterLab pada `http://localhost:8888/lab`. Konfigurasi Dockerfile menjala
 
 Isi bagian ini sebelum pengumpulan akhir.
 
-> Alat AI yang digunakan: Codex.
+> Alat AI yang digunakan: [isi sesuai template dosen].
 >
-> Bagian yang dibantu: review dan perapian notebook profiling serta dokumentasi Milestone 1.
+> Bagian yang dibantu: [isi sesuai template dosen].
 >
-> Verifikasi yang dilakukan: notebook profiling dijalankan ulang melalui environment Docker; mahasiswa perlu meninjau dan memahami setiap cell sebelum pengumpulan.
+> Verifikasi yang dilakukan: [isi sesuai template dosen].
